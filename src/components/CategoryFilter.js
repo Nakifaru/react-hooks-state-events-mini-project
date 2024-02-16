@@ -1,12 +1,12 @@
 import React from "react";
 
-function CategoryFilter({CATEGORIES, fitlerCategory}) {
+function CategoryFilter({categories, fitlerCategory}) {
 
 
   function handleClick(event) {
     event.target.classList.add('selected');
     fitlerCategory(event.target.value)
-    console.log(event.target.value);
+    console.log('After taking value of selected category:',event.target.value);
   }
 
   return (
@@ -14,7 +14,7 @@ function CategoryFilter({CATEGORIES, fitlerCategory}) {
       <h5>Category filters</h5>
       {
       /* render <button> elements for each category here */
-      CATEGORIES.map((category) => <button key={category} onClick={handleClick} value={category}> {category} </button>)
+      categories.map((category) => <button key={category} onClick={handleClick} value={category}> {category} </button>)
       }
     </div>
   );

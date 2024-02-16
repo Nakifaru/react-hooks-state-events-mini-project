@@ -6,8 +6,6 @@ import { useState } from "react";
 
 
 import { CATEGORIES, TASKS } from "../data";
-console.log("Here's the data you're working with");
-console.log({ CATEGORIES, TASKS });
 
 function App() {
 
@@ -17,11 +15,10 @@ function App() {
   function onTaskFormSubmit(task) {
     setMyTasks([...myTasks, task])
   }
-  console.log(myTasks);
 
 
   function deleteTask(text) {
-    setMyTasks(myTasks.filter(task => task.text !== text))
+    setMyTasks(myTasks.filter((task) => task.text !== text))
   }
 
   function fitlerCategory(category) {
@@ -29,7 +26,7 @@ function App() {
       if (category === "All") return true;
       return task.category === category;
     }))
-    console.log(category);
+    console.log('When filtering:',category);
   }
 
   
@@ -37,9 +34,9 @@ function App() {
   return (
     <div className="App">
       <h2>My tasks</h2>
-      <CategoryFilter CATEGORIES={CATEGORIES} fitlerCategory={fitlerCategory}/>
-      <NewTaskForm CATEGORIES={CATEGORIES} onTaskFormSubmit={onTaskFormSubmit}/>
-      <TaskList myTasks={myTasks} deleteTask={deleteTask}/>
+      <CategoryFilter categories={CATEGORIES} fitlerCategory={fitlerCategory}/>
+      <NewTaskForm categories={CATEGORIES} onTaskFormSubmit={onTaskFormSubmit}/>
+      <TaskList displayTasks={myTasks} onDelete={deleteTask}/>
     </div>
   );
 }
